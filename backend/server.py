@@ -33,7 +33,6 @@ logger = logging.getLogger("hiretrack")
 
 # ============ DB ============
 import certifi
-from motor.motor_asyncio import AsyncIOMotorClient # type: ignore
 
 MONGO_URL = os.environ["MONGO_URL"]
 
