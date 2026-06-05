@@ -32,8 +32,17 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger("hiretrack")
 
 # ============ DB ============
-mongo_url = os.environ["MONGO_URL"]
-client = AsyncIOMotorClient(mongo_url)
+import certifi
+from motor.motor_asyncio import AsyncIOMotorClient # type: ignore
+
+MONGO_URL = os.environ["MONGO_URL"]
+
+client = AsyncIOMotorClient(
+    MONGO_URL,
+    tls=True,
+    tlsCAFile=certifi.where()
+)
+
 db = client[os.environ["DB_NAME"]]
 
 # ============ FastAPI ============
