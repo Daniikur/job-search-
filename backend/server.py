@@ -17,7 +17,6 @@ import jwt # type: ignore
 from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, Depends, UploadFile, File, Query, Header
 from fastapi.responses import StreamingResponse
 from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient # type: ignore
 from pydantic import BaseModel, Field, EmailStr
 from groq import Groq # type: ignore
 import os
@@ -33,6 +32,7 @@ logger = logging.getLogger("hiretrack")
 
 # ============ DB ============
 import certifi
+from motor.motor_asyncio import AsyncIOMotorClient  # type: ignore
 
 MONGO_URL = os.environ["MONGO_URL"]
 
